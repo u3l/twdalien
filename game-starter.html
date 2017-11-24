@@ -8,57 +8,17 @@ onload=function(){
 	var steps = 0;
 	var x = 1;
 	var y = 1;
-	var position = 108;
+	var position = 98;
 	var winWidth = window.innerWidth;
-
-	var start = document.getElementById('alien');
+	var img = document.getElementById('alien');
 	var button = document.getElementById('jump');
-
-	function move(){
-
-		console.log(winWidth, "width");
-	  steps++
-		if(steps >= 30){
-			steps = 0;
-		}
-		
-		if( x >= 0){	
-		var img = document.getElementById('alien');
-		img.style.left = parseInt(img.style.left) + x + 'px';
-		img.src='images/alien/alienrwalk' + steps + '.gif';
-		}else{
-			var img = document.getElementById('alien');
-			img.style.left = parseInt(img.style.left) + x + 'px';
-			img.src='images/alien/alienlwalk' + steps + '.gif';
-			}
-
-		position += x;
-		console.log(position, "moving");
-		if(position >= winWidth){
-			 x = -x;
-		}
-
-		if(position <= 108){
-			x = -x;
-			position = 108;
-		}
-
-	}
-
-	start.onclick=function(){
-		if(myTimer == null){
-			// not running; let's start a timer
-			myTimer = setInterval(move, 10);
-		}else{
-			// timer is already running; let's stop it 
-			clearInterval(myTimer)
-			myTimer = null;
-		}
-	}
 
 	function jump(){
 
+		if(x >= 0){
+		
 
+		}
 
 	}
 
@@ -70,6 +30,47 @@ onload=function(){
 
 	}
 
+	function move(){
+
+		console.log(winWidth, "width");
+	  steps++
+		if(steps >= 30){
+			steps = 0;
+		}
+		
+		if( x >= 0){	
+		img.style.left = parseInt(img.style.left) + x + 'px';
+		img.src='images/alien/alienrwalk' + steps + '.gif';
+		}else{
+			img.style.left = parseInt(img.style.left) + x + 'px';
+			img.src='images/alien/alienlwalk' + steps + '.gif';
+			}
+
+		// position = position + x		
+		position += x;
+		console.log(position, "moving");
+		if(position >= winWidth){
+			 x = -x;
+		}
+
+		if(position <= 98){
+			x = -x;
+			position = 98;
+		}
+
+	}
+
+	img.onclick=function(){
+		if(myTimer == null){
+			// not running; let's start a timer
+			myTimer = setInterval(move, 10);
+		}else{
+			// timer is already running; let's stop it 
+			clearInterval(myTimer)
+			myTimer = null;
+		}
+	}
+
 }
 
 </script>
@@ -79,7 +80,7 @@ onload=function(){
 	<button id="jump"><p>Jump</p></button>
 
 	<img src="images/alien/alienrwalk0.gif" id="alien" 
-	     style="position:absolute; left:12; top:100px">
+	     style="position:absolute; left:1px; top:100px">
 
 </body>
 </html>
